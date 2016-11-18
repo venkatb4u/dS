@@ -15,5 +15,7 @@
     "url": "git@github.com:dominic097/dS.git"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^3.10.2"
+  }
 }
