@@ -1,0 +1,19 @@
+{
+  "name": "dS",
+  "simpleName": "dataStructure",
+  "version": "0.0.1",
+  "author": "Dominic <dominic097@gmail.com>",
+  "keywords": [
+    "ds",
+    "data",
+    "structure",
+    "ML",
+    "machine learning"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dominic097/dS.git"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
