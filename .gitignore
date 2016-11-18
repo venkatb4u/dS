@@ -17,7 +17,7 @@ _book
 *.mobi
 *.pdf
 # ignorring WS .ideae DIR
-.idea/
+/.idea/
 
 
 
