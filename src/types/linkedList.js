@@ -67,10 +67,29 @@ class linkedList extends dS {
         return this.return(this.last);
     };
 
+    /**
+     * reset the linkedList dataStructure
+     */
     reset() {
         this.first = null;
         this.last = null;
         this.length = 0;
+    }
+
+    /**
+     * return True if dataSet is not empty
+     * @returns {boolean}
+     */
+    isEmpty() {
+        return this.length > 0;
+    }
+
+    /**
+     * get the size of give dataSet
+     * @returns {number|*}
+     */
+    size() {
+        return this.length;
     }
 
     /**
