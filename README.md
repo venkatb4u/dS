@@ -10,13 +10,16 @@
 ```
 ** 2 Require it and use **
 
-```js
-	
+```js	
     var LinkedList = require('../types/linkedList'),
     	link = new LinkedList();
     
-    link.add(10)
+    link.add(10);
     
 ```
+
+### Included data structures
+
+- Linked List
 
 
