@@ -50,4 +50,4 @@ gulp.task('browserify', function () {
 gulp.task('default', ['watch']);
 
 // add uglifyjs compression here when we figure that out
-gulp.task('dist', ['browserify']);
+gulp.task('dist', ['browserify']);  

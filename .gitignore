@@ -19,6 +19,8 @@ _book
 # ignorring WS .ideae DIR
 /.idea/
 
+/dist/
+
 
 
 
