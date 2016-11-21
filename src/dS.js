@@ -6,9 +6,7 @@ var _default = require('./_default');
  * copyright(c) 2016 Dominic
  * Licensed under the Apache 2.0 license. *
  */
-class dS extends _default{
-
-}
+class dS extends _default{}
 
 
 module.exports = dS;
