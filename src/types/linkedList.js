@@ -19,6 +19,20 @@ class linkedList extends dS {
         this.doubleLinkedLst = false;
     }
 
+    [Symbol.iterator]() {
+        var i = 0, _nodeToReturn = this.first, _this = this;
+        return {
+            next: () => {
+                if (i++ > 0)
+                    _nodeToReturn = (_nodeToReturn[NEXT] ? _nodeToReturn[NEXT] : null);
+                return {
+                    value: _nodeToReturn,
+                    done: _nodeToReturn == null && !_this.hasNext(_nodeToReturn)
+                }
+            }
+        };
+    }
+
     /**
      * represent a NODE in a linked list
      * @param d dataSet value
@@ -28,6 +42,15 @@ class linkedList extends dS {
      */
     node(d, prev, next) {
         return {[PREV]: prev, 'data': d, [NEXT]: next};
+    }
+
+    /**
+     * Utility fn
+     * @param link dataStructure of type node
+     * @returns {boolean}
+     */
+    hasNext(link) {
+        return (link && link[NEXT] != null) ? true : false;
     }
 
     /**
@@ -63,7 +86,7 @@ class linkedList extends dS {
             this.first = this.length > 1 ? this.first[NEXT] : null;
         }
         else {
-            position = position >= this.length ? this.length -1 : position;
+            position = position >= this.length ? this.length - 1 : position;
             while (i++ < position && i < this.length) {
                 _prevNode = _nodeToRemove;
                 _nodeToRemove = _nodeToRemove[NEXT];
@@ -78,19 +101,22 @@ class linkedList extends dS {
 
 }
 
-
-let obj = new linkedList();
-obj.add(1);
-obj.add(2);
-obj.add(3);
-obj.add(4);
-obj.add(5);
-obj.add(6);
-console.log(obj.length);
-console.log(obj.remove(5));
-console.log(obj.remove(5));
-console.log(obj.remove(NaN));
-console.log(Object.getOwnPropertySymbols(obj.node(Object)));
+// let obj = new linkedList();
+// obj.add(1);
+// obj.add(2);
+// obj.add(3);
+// obj.add(4);
+// obj.add(5);
+// obj.add(6);
+//
+// for (var o of obj) {
+//     console.log(o.data);
+// }
+// console.log(obj.length);
+// console.log(obj.remove(5));
+// console.log(obj.remove(5));
+// console.log(obj.remove(NaN));
+// console.log(Object.getOwnPropertySymbols(obj.node(Object)));
 
 
 module.exports = linkedList;
