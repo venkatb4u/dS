@@ -3,6 +3,7 @@
   "simpleName": "dataStructure",
   "version": "0.0.1",
   "author": "Dominic <dominic097@gmail.com>",
+  "main": "index.js",
   "keywords": [
     "ds",
     "data",
@@ -14,6 +15,23 @@
     "type": "git",
     "url": "git@github.com:dominic097/dS.git"
   },
+  "presets": ["es2016"],
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^3.10.2",
+    "istanbul": "^0.4.2",
+    "jslint": "^0.9.6",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2",
+    "browserify": "^5.12.1",
+    "gulp": "^3.8.8",
+    "gulp-istanbul": "^0.3.0",
+    "gulp-mocha": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "gulp-coveralls": "^0.1.3"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "coveralls": "gulp coveralls"
+  }
 }
