@@ -1,5 +1,5 @@
 ## dS
- _A Data Structur Library in JS_
+ _A Data Structure Library in JS_
  
 ### To begin
 
