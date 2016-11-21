@@ -3,12 +3,12 @@
  
 ### To begin
 
-** 1. Install it :**
+ **1. Install it :**
 
 ```bash
 	npm install ds --save-dev
 ```
-** 2 Require it and use **
+**2 Require it and use :**
 
 ```js	
     var LinkedList = require('../types/linkedList'),
