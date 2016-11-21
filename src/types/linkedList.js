@@ -20,7 +20,7 @@ class linkedList extends dS {
     }
 
     [Symbol.iterator]() {
-        var i = 0, _nodeToReturn = this.first, _this = this;
+        var i = 0, _nodeToReturn = this.getFirst(), _this = this;
         return {
             next: () => {
                 if (i++ > 0)
@@ -54,6 +54,26 @@ class linkedList extends dS {
     }
 
     /**
+     * get the first Element of Linked List
+     */
+    getFirst() {
+        return this.return(this.first);
+    };
+
+    /**
+     * get the last Element of Linked List
+     */
+    getLast() {
+        return this.return(this.last);
+    };
+
+    reset() {
+        this.first = null;
+        this.last = null;
+        this.length = 0;
+    }
+
+    /**
      * helper method to compute dataSet Addition
      * @param value dataSet value
      * @returns {null|{data}}
@@ -69,7 +89,7 @@ class linkedList extends dS {
             this.last = _node;
         }
         this.length++;
-        return this.last;
+        return this;
     }
 
     /**
@@ -78,12 +98,11 @@ class linkedList extends dS {
      * @returns {null|{data}}
      */
     remove(position) {
-        let _nodeToRemove = this.first,
-            _prevNode = this.first,
+        let _nodeToRemove = this.getFirst(),
+            _prevNode = _nodeToRemove,
             i = 0;
         position = position ? position : 0;
         if (position === 0) {
-            this.first = this.length > 1 ? this.first[NEXT] : null;
         }
         else {
             position = position >= this.length ? this.length - 1 : position;
@@ -99,6 +118,49 @@ class linkedList extends dS {
         return _nodeToRemove;
     }
 
+    /**
+     * Return / to get the element @position <index-INT>
+     * @param position Index at which data to be returned
+     * @returns {{data}}
+     */
+    nodeAtIndex(position) {
+        let i = 0, _nodeToRetrun = this.getFirst();
+        while (i++ < position) {
+            _nodeToRetrun = _nodeToRetrun[NEXT];
+        }
+        return _nodeToRetrun;
+    }
+
+    /**
+     * finds the index of give dataSet
+     * @param datum
+     * @param equalsCB
+     */
+    indexOf(datum, equalsCB) {
+        let _index = 0,
+            _equals = equalsCB || this.equals,
+            _node = this.first,
+            _break = false;
+        while (_node && !_break) {
+            if (_equals(datum, _node.data)) {
+                _break = true;
+            }
+            _node = _node[NEXT];
+            _index++;
+        }
+        return _break ? _index : -1;
+    }
+
+    /**
+     * returns true if datum is present in give linked List
+     * @param datum
+     * @param equalsCB
+     * @returns {boolean}
+     */
+    has(datum, equalsCB) {
+        return (this.indexOf(datum, equalsCB) >= 0);
+    }
+
 }
 
 // let obj = new linkedList();
@@ -108,12 +170,18 @@ class linkedList extends dS {
 // obj.add(4);
 // obj.add(5);
 // obj.add(6);
+
+// console.log(obj.has(3));
+//
+// console.log(obj.indexOf(3));
+
+// console.log( obj.nodeAtIndex(2));
 //
 // for (var o of obj) {
 //     console.log(o.data);
 // }
 // console.log(obj.length);
-// console.log(obj.remove(5));
+// obj.remove(5);
 // console.log(obj.remove(5));
 // console.log(obj.remove(NaN));
 // console.log(Object.getOwnPropertySymbols(obj.node(Object)));

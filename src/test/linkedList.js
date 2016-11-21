@@ -26,7 +26,7 @@ describe("UT for linkedList", function () {
             _link.length.should.equal(i);
             for (var i = 0; i < 10; i++)
                 _link.add(i);
-            _link.remove(5).data.should.equal(5);
+            _link.remove(5).should.containEql({data: 5});
             done();
         });
     });
@@ -44,6 +44,43 @@ describe("UT for linkedList", function () {
             length.should.equal(_link.length);
             done();
         })
+    })
+
+    it("linked List nodeAtIndex ", function (done) {
+        var _link = new LinkedList(), length = 0;
+        for (var i = 0; i < 10; i++)
+            _link.add(i);
+
+        _link.nodeAtIndex(5).should.containEql({data: 5});
+        done();
+    });
+
+    it("linked List indexOf  ", function (done) {
+        var _link = new LinkedList(), length = 0;
+        for (var i = 1; i < 10; i++)
+            _link.add(i);
+
+        _link.indexOf(5).should.equal(5);
+        done();
+    });
+
+    it("linked List has  ", function (done) {
+        var _link = new LinkedList(), length = 0;
+        for (var i = 1; i < 10; i++)
+            _link.add(i);
+
+        _link.has(5).should.equal(true);
+        done();
+    })
+
+    it("linked List reset  ", function (done) {
+        var _link = new LinkedList(), length = 0;
+        for (var i = 1; i < 10; i++)
+            _link.add(i);
+
+        _link.reset();
+        _link.length.should.equal(0);
+        done();
     })
 
 });
