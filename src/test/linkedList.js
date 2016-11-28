@@ -5,7 +5,7 @@
 
 var should = require("should"),
     assert = require("assert"),
-    LinkedList = require('../types/linkedList');
+    LinkedList = require('../types/LinkedList/singleList');
 
 describe("UT for linkedList", function () {
     "use strict";
@@ -71,7 +71,7 @@ describe("UT for linkedList", function () {
 
         _link.has(5).should.equal(true);
         done();
-    })
+    });
 
     it("linked List reset  ", function (done) {
         var _link = new LinkedList(), length = 0;
@@ -81,7 +81,32 @@ describe("UT for linkedList", function () {
         _link.reset();
         _link.length.should.equal(0);
         done();
-    })
+    });
+
+    it("linked List get size", function (done) {
+        var _link = new LinkedList(), length = 0;
+        for (var i = 0; i < 10; i++)
+            _link.add(i);
+        _link.size().should.equal(10);
+        done();
+    });
+
+    it("linked List isEmpty", function (done) {
+        var _link = new LinkedList(), length = 0;
+        _link.isEmpty().should.equal(true);
+        for (var i = 1; i < 10; i++)
+            _link.add(i);
+        _link.isEmpty().should.equal(false);
+        done();
+    });
+
+    it("linked List getLast", function (done) {
+        var _link = new LinkedList(), length = 0;
+        for (var i = 1; i < 10; i++)
+            _link.add(i);
+        _link.getLast().data.should.equal(9);
+        done();
+    });
 
 });
 

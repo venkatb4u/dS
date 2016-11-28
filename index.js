@@ -6,5 +6,5 @@
 'use strict';
 
 module.exports = {
-    LinkedList: require('./src/types/linkedList')
+    LinkedList: require('./src/types/LinkedList/linkedList')
 };

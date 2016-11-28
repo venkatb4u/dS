@@ -4,7 +4,7 @@
 
 'use strict';
 
-let dS = require('../dS');
+let dS = require('../../dS');
 const PREV = Symbol('prev'); //'prev';
 const NEXT = Symbol('next'); //'next';
 
@@ -81,7 +81,7 @@ class linkedList extends dS {
      * @returns {boolean}
      */
     isEmpty() {
-        return this.length > 0;
+        return this.length <= 0;
     }
 
     /**
@@ -181,31 +181,6 @@ class linkedList extends dS {
     }
 
 }
-
-// let obj = new linkedList();
-// obj.add(1);
-// obj.add(2);
-// obj.add(3);
-// obj.add(4);
-// obj.add(5);
-// obj.add(6);
-
-// console.log(obj.has(3));
-//
-// console.log(obj.indexOf(3));
-
-// console.log( obj.nodeAtIndex(2));
-//
-// for (var o of obj) {
-//     console.log(o.data);
-// }
-// console.log(obj.length);
-// obj.remove(5);
-// console.log(obj.remove(5));
-// console.log(obj.remove(NaN));
-// console.log(Object.getOwnPropertySymbols(obj.node(Object)));
-
-
 module.exports = linkedList;
 
 
