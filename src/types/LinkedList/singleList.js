@@ -4,7 +4,7 @@
 
 'use strict';
 
-let dS = require('../dS');
+let dS = require('../../dS');
 const PREV = Symbol('prev'); //'prev';
 const NEXT = Symbol('next'); //'next';
 
@@ -81,7 +81,7 @@ class linkedList extends dS {
      * @returns {boolean}
      */
     isEmpty() {
-        return this.length > 0;
+        return this.length <= 0;
     }
 
     /**

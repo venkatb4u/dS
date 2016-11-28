@@ -34,7 +34,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "scripts": {
-    "test": "gulp test",
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha src/test/* ",
     "coveralls": "gulp coveralls",
     "docs:prepare": "gitbook install",
     "docs:watch": "npm run docs:prepare && gitbook serve",
