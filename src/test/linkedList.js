@@ -10,10 +10,20 @@ var should = require("should"),
 describe("UT for linkedList", function () {
     "use strict";
 
-    var linkedList = new LinkedList();
-
-    it("basic functional Check ", function (done) {
+    it("basic function exist Check ", function (done) {
+        var linkedList = new LinkedList();
         should.exist(linkedList.node);
+        should.exist(linkedList.hasNext);
+        should.exist(linkedList.getFirst);
+        should.exist(linkedList.getLast);
+        should.exist(linkedList.reset);
+        should.exist(linkedList.isEmpty);
+        should.exist(linkedList.size);
+        should.exist(linkedList.add);
+        should.exist(linkedList.remove);
+        should.exist(linkedList.nodeAtIndex);
+        should.exist(linkedList.indexOf);
+        should.exist(linkedList.has);
         Object.getOwnPropertySymbols(linkedList.node({})).length.should.equal(2);
         done();
     });
@@ -31,7 +41,7 @@ describe("UT for linkedList", function () {
         });
     });
 
-    describe("testing iterability of type linked list ", function () {
+    describe("testing iterability of type single linked list ", function () {
         it("iterate 10 Elements", function (done) {
             var _link = new LinkedList(), length = 0;
             for (var i = 0; i < 10; i++)
@@ -46,7 +56,7 @@ describe("UT for linkedList", function () {
         })
     })
 
-    it("linked List nodeAtIndex ", function (done) {
+    it("single linked List nodeAtIndex ", function (done) {
         var _link = new LinkedList(), length = 0;
         for (var i = 0; i < 10; i++)
             _link.add(i);
@@ -55,7 +65,7 @@ describe("UT for linkedList", function () {
         done();
     });
 
-    it("linked List indexOf  ", function (done) {
+    it("single linked List indexOf  ", function (done) {
         var _link = new LinkedList(), length = 0;
         for (var i = 1; i < 10; i++)
             _link.add(i);
@@ -64,7 +74,7 @@ describe("UT for linkedList", function () {
         done();
     });
 
-    it("linked List has  ", function (done) {
+    it("single linked List has  ", function (done) {
         var _link = new LinkedList(), length = 0;
         for (var i = 1; i < 10; i++)
             _link.add(i);
@@ -73,7 +83,7 @@ describe("UT for linkedList", function () {
         done();
     });
 
-    it("linked List reset  ", function (done) {
+    it("single linked List reset  ", function (done) {
         var _link = new LinkedList(), length = 0;
         for (var i = 1; i < 10; i++)
             _link.add(i);
@@ -83,7 +93,7 @@ describe("UT for linkedList", function () {
         done();
     });
 
-    it("linked List get size", function (done) {
+    it("single linked List get size", function (done) {
         var _link = new LinkedList(), length = 0;
         for (var i = 0; i < 10; i++)
             _link.add(i);
@@ -91,7 +101,7 @@ describe("UT for linkedList", function () {
         done();
     });
 
-    it("linked List isEmpty", function (done) {
+    it("single linked List isEmpty", function (done) {
         var _link = new LinkedList(), length = 0;
         _link.isEmpty().should.equal(true);
         for (var i = 1; i < 10; i++)
@@ -100,7 +110,7 @@ describe("UT for linkedList", function () {
         done();
     });
 
-    it("linked List getLast", function (done) {
+    it("single linked List getLast", function (done) {
         var _link = new LinkedList(), length = 0;
         for (var i = 1; i < 10; i++)
             _link.add(i);
