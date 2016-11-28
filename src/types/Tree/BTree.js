@@ -13,32 +13,17 @@ class BTree extends dS {
 
     constructor(init) {
         super();
-        this.validateCf(init);
+        this.setDefaultValue(init);
     }
 
     setDefaultValue(_default) {
         this.root = false;
-        this.nodePropName = _default ? _default.nodePropName : '_index';
         this.visiting = null;
         this.traversing = [];
         this.length = 0;
 
         //Overriding comparison callback function
         this.compare = _default && _default.compare ? _default.compare : this.lessThanEquals;
-    }
-
-    /**
-     * validator for given config, if not received default config will be set
-     * @param cf
-     */
-    validateCf(cf) {
-        if (cf && (cf instanceof BTree || (cf.hasOwnProperty('nodePropName') && cf.nodePropName))) {
-            this.setDefaultValue(cf);
-        }
-        else {
-            console.warn("No Configuration received, initiating with Default Values...");
-            this.setDefaultValue(false);
-        }
     }
 
     /**
@@ -71,7 +56,7 @@ class BTree extends dS {
             let breakLoop = false,
                 _index = 0;
             while (_currentNode && !breakLoop) {
-                let cmp = this.lessThanEquals(_nodeToAdd.data, _currentNode.data, this.nodePropName);
+                let cmp = this.lessThanEquals(_nodeToAdd.data, _currentNode.data);
 
                 if (cmp) {
                     if (!_currentNode[LEFT]) {
@@ -101,19 +86,19 @@ class BTree extends dS {
      * @returns {boolean|*|{data: *}}
      */
     search(d) {
-        if (this.equals(this.root.data, d, this.nodePropName)) {
+        if (this.equals(this.root.data, d)) {
             return this.root;
         }
         else {
             let _currentNode = this.root,
                 _nodeToReturn = this.root;
             while (_currentNode) {
-                if (this.equals(_currentNode.data, d, this.nodePropName)) {
+                if (this.equals(_currentNode.data, d)) {
                     _nodeToReturn = _currentNode;
                     _currentNode = null;
                 }
                 else {
-                    let cmp = this.compare(d, _currentNode.data, this.nodePropName);
+                    let cmp = this.compare(d, _currentNode.data);
                     if (cmp)
                         _currentNode = _currentNode[LEFT];
 
@@ -265,7 +250,7 @@ class BTree extends dS {
         // return this._wm.delete(k)
     }
 
-    get(k) {
+    get(d) {
         if (this.isUndefined(d)) {
             return false;
         }
@@ -278,13 +263,13 @@ class BTree extends dS {
 
 }
 
-var bT = new BTree({nodePropName: 'name'});
-var lst = [87, 45, 25, 36, 54, 85, 100, 25, 31, 34, 56, 75];
-for (var i = 0; i < 10; i++) {
-    bT.add({name: lst[i]});
-}
+// var bT = new BTree({nodePropName: 'name'});
+// var lst = [87, 45, 25, 36, 54, 85, 100, 25, 31, 34, 56, 75];
+// for (var i = 0; i < 10; i++) {
+//     bT.add({name: lst[i]});
+// }
+//
+// bT.search({name: lst[5]});
+// console.log(bT);
 
-bT.search({name: lst[5]});
-console.log(bT);
-
-module.export = BTree;
+module.exports = BTree;
